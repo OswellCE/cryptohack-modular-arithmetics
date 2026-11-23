@@ -99,12 +99,9 @@ Each example in [`examples/`](./examples) is a standalone script that re-impleme
 
 ## Heads up
 
-A few things worth knowing — I didn't change the code, just flagging them here.
-
-- **Option 7 in `main()` is unfinished.** It literally says `p = ` with nothing after it, which is a Python syntax error, so the file as a whole won't import or run until you fill that in. To try it, replace `p = ` with something like `p = 23` and give `ints` a few values.
-- **The Legendre shortcut needs `p ≡ 3 (mod 4)`.** The square-root trick `a^((p+1)/4) mod p` only works for primes that are 3 mod 4. The menu's own `p = 29` is `1 mod 4`, so the shortcut gives the wrong root there. Try `p = 23` instead — that's what example 07 uses. For `p ≡ 1 (mod 4)` you'd need the full Tonelli–Shanks algorithm.
-- **`modular_arithmetic_2` computes the full `a^b` first.** `pow(a, b) % c` works but materialises a huge number before reducing. The idiomatic form `pow(a, b, c)` does modular exponentiation internally and is way friendlier to memory. Fine for teaching, not for big inputs.
-- **Small comment typo.** In `greatest_common_divisor` the comment says "returns 0" but the function actually returns `b`, which is the right answer (`gcd(0, b) = |b|`). Just a typo in the comment, the code is correct.
+Two things if you're poking around the code:
+- **`Option 7 isn't done`**. I left p =  with no value, so it's a syntax error and the file won't run until you fill it in. Try p = 23 and put a few numbers in ints.
+- **`The Legendre shortcut`** only works when p ≡ 3 (mod 4). The a^((p+1)/4) mod p trick needs (p+1)/4 to be a whole number, which only happens when p is 3 mod 4. The menu uses p = 29, and 29 is 1 mod 4, so you get the wrong root there. Use p = 23 — that's what example 07 does. For 1 mod 4 primes you need the full Tonelli–Shanks.
 
 ---
 
